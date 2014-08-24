@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140824124222) do
+ActiveRecord::Schema.define(version: 20140824124223) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(version: 20140824124222) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
   end
 
   add_index "media", ["user_id"], name: "index_media_on_user_id"

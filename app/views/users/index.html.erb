@@ -2,8 +2,8 @@
 
 <% @media.each do |m| %>
 	<table>
-		<tr><td><%= image_tag m.image.url(:thumb) %></td>
-			<td><%= link_to 'Edit',edit_user_media_path(current_user,m) %></td>
+		<tr><td><%= image_tag m.attachment.url(:thumb) %></td>
+			<td><%= link_to 'Edit',edit_user_media_path(current_user, m) %></td>
 			<td>
 				<%= link_to 'Delete', user_media_path(current_user,m), method: :delete %></td>
 			</td>

@@ -1,7 +1,6 @@
 class Media < ActiveRecord::Base
-
-	belongs_to :user
-	has_attached_file :image, :styles => { :thumb => "200x200>" }
-	validates_attachment_content_type :image, :content_type => /\Aimage/
-	validates :image, presence: true
+  belongs_to :user
+  validates :attachment, presence: true
+  has_attached_file :attachment, :styles => { :thumb => "200x200>" }
+  validates_attachment_content_type :attachment, :content_type => [/image/, /application/, /video/]
 end

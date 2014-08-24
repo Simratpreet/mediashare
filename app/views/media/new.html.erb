@@ -1,13 +1,11 @@
-<% if(@media.errors) %>
-<%= @media.errors.full_messages do |e| %>
-<div>
-	<%= e %>
-</div>
-<% end %>
+<% if @media.errors.full_messages.any? %>
+  <% @media.errors.full_messages.each do |e| %>
+    <div><%= e %></div>
+  <% end %>
 <% end %>	
 <%= form_for @media, url: user_media_index_path(current_user), :html => { :multipart => true } do |f| %>
 <p>
-	<%= f.file_field :image %>
+	<%= f.file_field :attachment %>
 </p>
 
 <p>
