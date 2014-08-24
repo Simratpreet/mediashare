@@ -1,14 +1,15 @@
 <h1>Welcome<h1>
 
-<% @media.each do |m| %>
-	<table>
-		<tr><td><%= image_tag m.attachment.url(:thumb) %></td>
-			<td><%= link_to 'Edit',edit_user_media_path(current_user, m) %></td>
+<table>
+  <% @media.each do |media| %>
+		<tr>
+      <td><%= render_media_object(media) %></td>
+			<td><%= link_to 'Edit',edit_user_media_path(current_user, media) %></td>
 			<td>
-				<%= link_to 'Delete', user_media_path(current_user,m), method: :delete %></td>
+				<%= link_to 'Delete', user_media_path(current_user, media), method: :delete %></td>
 			</td>
 		</tr>
-	</table>
-<% end %>
+  <% end %>
+</table>
+
 <%= link_to 'Upload', new_user_media_path(current_user) %>
-	<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
