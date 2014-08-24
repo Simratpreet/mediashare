@@ -34,7 +34,7 @@ class MediaController < ApplicationController
 private
 	
 	def media_params
-		params.require(:media).permit(:image)
+		params.require(:media).permit(:attachment)
 	end
 
 	def load_media
