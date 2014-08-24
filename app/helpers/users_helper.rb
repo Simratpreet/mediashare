@@ -5,7 +5,7 @@ module UsersHelper
     elsif media.video?
       video_tag media.attachment, controls: true, autobuffer: true, class: 'video'
     else
-      link_to "Media Name", media.attachment.url
+      link_to media.name, media.attachment.url
     end
   end
 end

@@ -1,13 +1,19 @@
-<h1>Welcome<h1>
+<h1>Welcome</h1>
 
 <table>
   <% @media.each do |media| %>
 		<tr>
       <td><%= render_media_object(media) %></td>
+      <td><%= media.approved? %></td>
 			<td><%= link_to 'Edit',edit_user_media_path(current_user, media) %></td>
 			<td>
 				<%= link_to 'Delete', user_media_path(current_user, media), method: :delete %></td>
 			</td>
+      <td>
+        <% if media.approved? %>
+          <%= link_to 'Show', user_media_path(current_user, media) %></td>
+        <% end %>
+      </td>
 		</tr>
   <% end %>
 </table>
