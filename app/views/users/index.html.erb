@@ -1,21 +1,36 @@
-<h1>Welcome</h1>
+<%= stylesheet_link_tag "x" %>
+<div id = "header">
+  <div id = "web_name">MediaShare</div>
+  <p>Welcome <%= current_user.first_name.capitalize! %></p>
 
-<table>
-  <% @media.each do |media| %>
-		<tr>
-      <td><%= render_media_object(media) %></td>
-      <td><%= media.approved? %></td>
-			<td><%= link_to 'Edit',edit_user_media_path(current_user, media) %></td>
-			<td>
-				<%= link_to 'Delete', user_media_path(current_user, media), method: :delete %></td>
-			</td>
-      <td>
-        <% if media.approved? %>
-          <%= link_to 'Show', user_media_path(current_user, media) %></td>
-        <% end %>
-      </td>
-		</tr>
-  <% end %>
-</table>
+  <div class = "links"><%= link_to 'Upload', new_user_media_path(current_user),id: "upload_link" %></div>
+</div>
 
-<%= link_to 'Upload', new_user_media_path(current_user) %>
+
+<div class="outer-wrapper">
+  <div class="slide-container">
+    <div class="inside-wrapper">
+      <div class="slide-outer-container">
+      
+      <% @media.each do |media| %>
+        <div class="slide-block"> 
+        <% if !media.image? && !media.video? %>
+          <%= image_tag("../../assets/music.jpg", class: "sample")  %>
+        <% end %> 
+        <%= render_media_object(media) %>
+        
+        <%= link_to 'Edit',edit_user_media_path(current_user, media), class: "crud" %>
+
+        <%= link_to 'Delete', user_media_path(current_user, media), class: "crud", method: :delete %>
+        </div>   
+      <% end %>
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

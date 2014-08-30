@@ -1,14 +1,15 @@
 class Media < ActiveRecord::Base
 
   DOCUMENT_FORMATS = %w(application/pdf text/plain text/html)
-  AUDIO_FORMATS    = %w(audio/ogg application/ogg audio/mpeg audio/mp3)
+  AUDIO_FORMATS    = %w(audio/ogg application/ogg audio/mpeg audio/mp3 audio/x-m4-a)
   IMAGE_FORMATS    = %w(image/jpeg image/gif image/png)
-  VIDEO_FORMATS    = %w(video/mp4)
+  VIDEO_FORMATS    = %w(video/mp4 video/x-flv)
 
   belongs_to :user
   validates :attachment, presence: true
   validates :name,presence: true
-  has_attached_file :attachment, :styles => { :thumb => "200x200>" }
+  has_attached_file :attachment
+  
   validates_attachment_content_type :attachment, :content_type => IMAGE_FORMATS + DOCUMENT_FORMATS + AUDIO_FORMATS + VIDEO_FORMATS
 
   before_post_process :skip_for_audio, :skip_for_documents, :skip_for_video
