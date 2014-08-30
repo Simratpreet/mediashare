@@ -5,7 +5,12 @@
 
 }
 
-
+.add_friends p{
+	position:relative;
+	top:10px;
+	font-size:14px;
+	color:black;
+}
 table{
 	position:fixed;
 	top:80px;

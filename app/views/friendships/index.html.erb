@@ -1,0 +1,49 @@
+
+<div>
+<h1>Add Friends</h1>
+<% @non_friends.each do |nf|  %>
+  <p>
+    <strong><%= nf.first_name %></strong>
+    <%= link_to "Add Friend", friendships_path(friend_id: nf.id), method: :post %>
+  </p>
+<% end %>
+</div>
+
+<div>
+<h2>Current friends</h2>
+<% @friends.approved.each do |f| %>
+	<p>
+    <strong><%= f.friend.first_name %></strong>
+    <%= link_to "Remove Friend", f, :method => :delete %>
+  </p>
+<% end %>
+</div>
+
+<div>
+<h2>Request Sent</h2>
+<% @friends.pending.each do |f| %>
+	<p>
+    <strong><%= f.friend.first_name %></strong>
+    
+  </p>
+<% end %>
+</div>
+
+<div>
+<h2>Friended by Users</h2>
+<% @inverse_friendships.approved.each do |f| %>
+	<p><strong><%= f.user.first_name %></strong></p>
+<% end %>
+</div>	
+
+<div>
+<h2>Pending Requests</h2>
+<% @inverse_friendships.pending.each do |f| %>
+	<p>
+    <strong><%= f.user.first_name %></strong>
+    <%= link_to "Accept", accept_friendship_path(f) %>
+    <%= link_to "Reject", reject_friendship_path(f) %>
+  </p>
+<% end %>
+</div>
+
