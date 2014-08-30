@@ -1,4 +1,6 @@
 class Media < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked owner: -> (controller, model) { controller.current_user }
 
   DOCUMENT_FORMATS = %w(application/pdf text/plain text/html)
   AUDIO_FORMATS    = %w(audio/ogg application/ogg audio/mpeg audio/mp3)
