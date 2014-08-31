@@ -4,7 +4,9 @@ class FriendshipsController < ApplicationController
     @inverse_friendships = current_user.inverse_friendships.not_rejected
     @friends = current_user.friendships.not_rejected
     rejected_friendships = current_user.friendships.rejected
-    @non_friends = User.where.not(id: rejected_friendships.pluck(:user_id) +[current_user.id])
+    pending_friendships = current_user.friendships.pending
+    approved_friendships = current_user.friendships.approved
+    @non_friends = User.where.not(id: approved_friendships.pluck(:friend_id) + [current_user.id]  +  pending_friendships.pluck(:friend_id) +  rejected_friendships.pluck(:friend_id))
   end 
 
   def create

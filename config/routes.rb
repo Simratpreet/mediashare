@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 	devise_for :users
 	resources :users do
 		resources :media
+  	resources :news_feeds
 	end
 	root to: "users#index"
-
 end

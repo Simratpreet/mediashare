@@ -19,6 +19,7 @@ gem 'byebug'
 gem 'letter_opener', group: :development
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'public_activity'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
