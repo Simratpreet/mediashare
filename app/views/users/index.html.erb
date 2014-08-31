@@ -26,7 +26,7 @@
         
         <%= link_to 'Edit',edit_user_media_path(current_user, media), class: "crud" %>
 
-        <%= link_to 'Delete', user_media_path(current_user, media), class: "crud", method: :delete %>
+        <%= link_to 'Delete', user_media_path(current_user, media), class: "crud", data: { method: :delete, confirm: 'Are you sure?' } %>
         </div>   
       <% end %>
       

@@ -10,7 +10,7 @@ class Media < ActiveRecord::Base
   belongs_to :user
   validates :attachment, presence: true
   validates :name,presence: true
-  has_attached_file :attachment
+  has_attached_file :attachment, styles: { thumb: '200x200>', medium: '400x400' }
   
   validates_attachment_content_type :attachment, :content_type => IMAGE_FORMATS + DOCUMENT_FORMATS + AUDIO_FORMATS + VIDEO_FORMATS
 

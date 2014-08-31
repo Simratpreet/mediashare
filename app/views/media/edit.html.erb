@@ -2,13 +2,17 @@
   <% @media.errors.full_messages do |e| %>
   <div><%= e %></div>
   <% end %>
-<% end %>	
+<% end %> 
 <%= form_for @media, url: user_media_path(current_user, @media), :html => { :multipart => true } do |f| %>
 <p>
-	<%= f.file_field :attachment %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</p>
+<p>
+  <%= f.file_field :attachment %>
 </p>
 
 <p>
-	<%= f.submit "Submit" %>
+  <%= f.submit "Submit" %>
 </p>
 <% end %>
