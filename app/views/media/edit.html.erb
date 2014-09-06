@@ -1,0 +1,22 @@
+<% if(@media.errors) %>
+  <% @media.errors.full_messages do |e| %>
+  <div><%= e %></div>
+  <% end %>
+<% end %> 
+
+<div style="position:fixed; top:100px; height:150px;">
+<%= form_for @media, url: user_media_index_path(current_user), :html => { :multipart => true } do |f| %>
+
+<p style="position:relative; margin-top:3px; font-size:14px; color:black;">
+	<%= f.label :Name %>
+	<%= f.text_field :name %>
+</p>
+<p style="position:relative; margin-top:3px; font-size:14px; color:black;">
+	<%= f.file_field :attachment %>
+</p>
+
+<p style="position:relative; margin-top:3px;">
+	<%= f.submit "Submit" %>
+</p>
+<% end %>
+</div>

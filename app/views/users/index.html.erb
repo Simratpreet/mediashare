@@ -1,0 +1,34 @@
+<%= stylesheet_link_tag "x" %>
+
+
+
+<div class = "add_friends">
+  <%= link_to 'Friends', friendships_path %>
+  <%= link_to 'News Feed', user_news_feeds_path(current_user) %>
+</div>
+
+<div class="outer-wrapper">
+  <div class="slide-container">
+    <div class="inside-wrapper">
+      <div class="slide-outer-container">
+      
+      <% @media.each do |media| %>
+      <% if media.approved? %>
+        <div class="slide-block"> 
+        <% if !media.image? && !media.video? %>
+          <%= image_tag("../../assets/music.jpg", class: "sample")  %>
+        <% end %> 
+        <%= render_media_object(media) %>
+        
+        <%= link_to 'Edit',edit_user_media_path(current_user, media), class: "crud" %>
+        <%= link_to 'Show',user_media_path(current_user, media), class: "crud"  %>
+
+        <%= link_to 'Delete', user_media_path(current_user, media), class: "crud", data: { method: :delete, confirm: 'Are you sure?' } %>
+        </div>   
+      <% end %>  
+      <% end %>
+      
+      </div>
+    </div>
+  </div>
+</div>

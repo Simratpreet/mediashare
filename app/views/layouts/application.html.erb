@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mediashare</title>
+  <%= stylesheet_link_tag 'application' %>
+  <%= if !current_page?(friendships_path)
+    stylesheet_link_tag 'x' end
+    %>
+    
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <% if !current_page?(friendships_path) %>
+    <% if current_user %>
+    <div id = "header">
+      <div id = "web_name">MediaShare
+        <p>Welcome <%= current_user.first_name %></p>
+      </div>
+      <div class = "links" id = "my_uploads_link"><%= link_to 'My Uploads', users_path(current_user)%></div>
+      <div class = "links" id = "upload_link"><%= link_to 'Upload', new_user_media_path(current_user) %></div>
+      <%if current_user %>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete, id: "logout_button" %>
+      <% end %>
+    </div>
+    
+    <% end %>
+
+    <%= flash[:notice] %>
+
+
+    
+    <% end %>
+    <%= yield %>
+  </body>
+  </html>

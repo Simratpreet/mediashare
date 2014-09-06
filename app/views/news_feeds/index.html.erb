@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag "x" %>
+<h1>News Feed</h1>
+
+
+<div class="outer-wrapper">
+	<div class="slide-container">
+		<div class="inside-wrapper">
+			<div class="slide-outer-container">
+
+				<% @activities.each do |activity| %>
+				<% if activity.trackable %>
+				<% if activity.trackable.approved? %>
+				<div class="slide-block"> 
+					
+					<% if !activity.trackable.image? && !activity.trackable.video? %>
+					
+					<%= image_tag("../../assets/music.jpg", class: "sample") %> 
+					<% audio_tag [activity.trackable.attachment.url],  autoplay: false, controls: true, class: "audio" %>
+					<% end %> 
+					<%= if activity.trackable.image?
+						image_tag activity.trackable.attachment.url(:thumb), class: "media"
+					elsif activity.trackable.video?
+						video_tag [activity.trackable.attachment.url], controls: true, autobuffer: true, class: "media"
+					else
+						audio_tag [activity.trackable.attachment.url],  autoplay: false, controls: true, class: "audio"
+						end %>
+						<%= link_to activity.owner.first_name, activity.owner, class: "crud"  if activity.owner %>	
+
+					</div>
+					<% end %>
+					<% end %>   
+					<% end %>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+

@@ -1,0 +1,23 @@
+/*.media_div{
+	position:fixed; 
+	width: 100%;
+	height:100%;
+	top:42px; 
+	background:rgba(0,0,0,0.87); 
+	z-index:2000;
+	opacity: 2;
+}*/
+#media_show{
+	position: fixed;
+	margin-top: 100px;
+	height: 400px;
+	width: 400px;
+	margin-left: 33%; 
+}
+#video_show{
+	position: fixed;
+	margin-top: 100px;
+	height: 400px;
+	width: 400px;
+	margin-left: 33%; 	
+}

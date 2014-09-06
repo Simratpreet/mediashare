@@ -1,0 +1,12 @@
+<%= stylesheet_link_tag "show" %>
+<div class = "media_div">
+	<%=
+	if @media.image?
+		image_tag @media.attachment.url(:medium), id: "media_show"
+
+	elsif @media.video?
+		video_tag @media.attachment.url, controls: true, autobuffer: true, id: "video_show"
+	else
+	end	
+	%>
+</div>  
